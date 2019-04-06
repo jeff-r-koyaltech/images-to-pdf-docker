@@ -1,0 +1,9 @@
+version: '3'
+services:
+  images-to-pdf-docker:
+    image: madhead/imagemagick
+    volumes:
+      - ./input:/in
+      - ./output:/out
+    # control environment variables from the .env file
+    command: convert -density ${DENSITY} /in/*.{JPG,jpg,png,PNG} -quality ${QUALITY} /out/document.pdf
